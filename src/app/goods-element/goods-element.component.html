@@ -1,0 +1,13 @@
+<div class="panel panel-default" style="width: 30em;" *ngFor="let p of aG">
+    <!--  <ng-container *ngIf="p.goods.length != 0"> !!!! -->
+    <div class="panel-heading">
+        <strong> {{ p.category.category_name }} </strong>
+    </div>
+    <div class="panel-body">
+        <p *ngFor="let prod of p.goods" style="margin-bottom: 3em;">
+            {{prod.goodsName}} ({{prod.goodsCount}})
+            <button class="btn btn-danger pull-right" (click)="deleteElementNew(p.goods, prod)">Odstranit</button>
+        </p>
+    </div>
+    <!-- </ng-container> -->
+</div>

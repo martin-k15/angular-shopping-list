@@ -1,0 +1,12 @@
+.btn {
+    margin: 1em 1em 1em 0;
+}
+
+.box {
+    width: 25em;
+    height: 15em;
+    background-color: rgb(209, 252, 124);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

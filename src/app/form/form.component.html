@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <label for="n">Název</label>
+                <!--<input type="text" class="form-control" placeholder="Zadejte název... " style="width:20em;"
+                    [(ngModel)]="name">-->
+                    <input type="text" class="form-control" placeholder="Zadejte název... " style="width:20em;"
+                    #nameInput [(ngModel)]="name">
+            </div>
+
+            <div>
+                <label for="n">Počet</label>
+                <input type="number" class="form-control" placeholder="0" [(ngModel)]="count" id="count" value=""
+                    min="1" max="10" step="1" style="width: 6em;" #numberOfGoodsInput>
+            </div>
+            <div>
+                <label for="n">Kategorie</label><br>
+                <select [(ngModel)]="nrss" class="form-control" style="width:16em;">
+                    <option selected value="default">-- Vyberte kategorii --</option>
+                    <option *ngFor="let c of categories"> {{ c.category_name }}</option>
+                </select>
+            </div>
+            <div>
+                <!-- <button type="submit" class="btn btn-primary bt" (click)="onClear()">Vyčistit</button> -->
+                <button class="btn btn-success" type="submit" (click)="onCreate(nameInput)">Přidat</button>
+                <button type="submit" class="btn btn-danger bt" (click)="onDelete()">Smazat vše</button>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>

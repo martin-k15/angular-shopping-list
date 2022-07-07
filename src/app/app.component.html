@@ -1,0 +1,19 @@
+<app-header></app-header>
+<app-form (createNewProduct)="onGoodsCreated($event.dataG, $event.g)" (deleteAll)="onGoodsDeleteAll()"></app-form>
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-10">
+            <h4>Seznam</h4>
+
+            <div id="htmlData">
+                <app-goods-element [aG]="allGoods"></app-goods-element>
+            </div>
+
+            <div class="col-md-4 text-right">
+                <button class="btn btn-success btn-block" (click)="openPDF()">Download PDF</button>
+            </div>
+
+        </div>
+    </div>
+</div>
