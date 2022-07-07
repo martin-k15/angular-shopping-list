@@ -5,7 +5,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FormComponent } from './form/form.component';
-import { ServerElementComponent } from './server-element/server-element.component';
 import { GoodsElementComponent } from './goods-element/goods-element.component';
 
 @NgModule({
@@ -13,7 +12,6 @@ import { GoodsElementComponent } from './goods-element/goods-element.component';
     AppComponent,
     HeaderComponent,
     FormComponent,
-    ServerElementComponent,
     GoodsElementComponent
   ],
   imports: [

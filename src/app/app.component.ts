@@ -25,7 +25,6 @@ export class AppComponent {
   onGoodsDeleteAll() {
 
     this.allGoods.forEach(elem => {
-      //elem.goods = [];
       elem.goods.splice(0, elem.goods.length)
     });
 
@@ -44,18 +43,18 @@ export class AppComponent {
     */
 
   // defaultní zboží
-  fruits: Goods[] = [new Goods('Jablka', 4), new Goods('Jahody', 2), new Goods('Borůvky', 2)];
-  meat: Goods[] = [new Goods('Kuřecí maso', 1), new Goods('Šunka', 2)];
-  cans: Goods[] = [new Goods('Kukuřice', 2), new Goods('Tuňák', 1), new Goods('Okurky', 3), new Goods('Švestky celé', 2)];
+  fruitsAndVegetables: Goods[] = [new Goods('jablka', 4), new Goods('kiwi', 3), new Goods('mrkev', 6)];
+  meat: Goods[] = [new Goods('kuřecí maso', 1), new Goods('šunka', 1)];
+  diaryProducts: Goods[] = [new Goods('mléko', 2), new Goods('jogurty bílé', 5), new Goods('smetana', 2), new Goods('máslo', 2)];
 
   @Input() allGoods: CategoryGoods[] = [
-    new CategoryGoods(new Category('Ovoce a zelenina'), this.fruits),
+    new CategoryGoods(new Category('Ovoce a zelenina'), this.fruitsAndVegetables),
     new CategoryGoods(new Category('Maso, sýry'), this.meat),
-    new CategoryGoods(new Category('Pečivo'), this.meat),
-    new CategoryGoods(new Category('Mlečné výrobky, mražené'), []),
+    new CategoryGoods(new Category('Pečivo'), []),
+    new CategoryGoods(new Category('Mlečné výrobky, mražené'), this.diaryProducts),
     new CategoryGoods(new Category('Vaření (těstoviny, koření, ...'), []),
     new CategoryGoods(new Category('Sladkosti'), []),
-    new CategoryGoods(new Category('Konzervy'), this.cans),
+    new CategoryGoods(new Category('Konzervy'), []),
     new CategoryGoods(new Category('Slané výrobky'), []),
     new CategoryGoods(new Category('Drogerie (kapesníky, pasta, ...)'), []),
     new CategoryGoods(new Category('Nápoje'), []),
@@ -63,13 +62,7 @@ export class AppComponent {
   ];
 
 
-
-
-
-
-
-
-  /* EXPORT DO PDF */
+  /* PDF EXPORT */
   @ViewChild('htmlData') htmlData!: ElementRef;
   public openPDF(): void {
     let DATA: any = document.getElementById('htmlData');
