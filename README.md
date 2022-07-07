@@ -1,5 +1,7 @@
 # AngularShopping
 
+![alt text](https://github.com/martin-k15/my-angular-shopping-list/blob/main/angular-shopping-photo.png)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.2.
 
 ## Development server
