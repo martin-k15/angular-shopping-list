@@ -44,7 +44,7 @@ export class FormComponent implements OnInit {
   }
 
   onCreate(nameInput: HTMLInputElement) {
-    if (this.name == "" || this.nrss == "default") {
+    if (this.name == "" || this.nrss == "default" || this.count < 1) {
       alert("Něco není správně!")
       return
     }
@@ -56,13 +56,8 @@ export class FormComponent implements OnInit {
     this.onClear()
   }
 
-  constructor() {
-    this.categories.forEach(el => {
-      //console.log(el);
-    });
-  }
-
-
+  constructor() {}
+  
   onDelete() {
     this.deleteAll.emit();
   }

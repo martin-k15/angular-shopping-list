@@ -6,7 +6,7 @@
     <div class="panel-body">
         <p *ngFor="let prod of p.goods" style="margin-bottom: 3em;">
             {{prod.goodsName}} ({{prod.goodsCount}})
-            <button class="btn btn-danger pull-right" (click)="deleteElementNew(p.goods, prod)">Odstranit</button>
+            <button class="btn btn-danger pull-right" (click)="deleteElementNew(p.goods, prod)">Delete</button>
         </p>
     </div>
     <!-- </ng-container> -->
