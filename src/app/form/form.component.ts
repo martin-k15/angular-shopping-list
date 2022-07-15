@@ -1,7 +1,8 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { GoodsCategoryService } from '../service/goods-category.service';
 import { Category } from '../shared/category.model';
 import { CategoryGoods } from '../shared/categoryGoods.model';
-import { Goods} from '../shared/goods.model';
+import { Goods } from '../shared/goods.model';
 
 @Component({
   selector: 'app-form',
@@ -10,34 +11,26 @@ import { Goods} from '../shared/goods.model';
 })
 export class FormComponent implements OnInit {
 
+
+  constructor (private goodsCategoryService: GoodsCategoryService){}
+
   name: string = "";
   count: number = 1;
   nrss = "default";
-  
 
-  @Output() createNewProduct = new EventEmitter<{ dataG: Goods, g: string}>();
+
+  @Output() createNewProduct = new EventEmitter<{ dataG: Goods, g: string }>();
   @Output() deleteAll = new EventEmitter();
 
   @ViewChild('numberOfGoodsInput') numberOfGoodsInput: ElementRef;
 
   @Input() dataG: Goods;
 
-  @Input() categories: Category[] = [
-    new Category('Ovoce a zelenina'),
-    new Category('Maso, sýry'),
-    new Category('Pečivo'),
-    new Category('Mlečné výrobky, mražené'),
-    new Category('Vaření (těstoviny, koření, ...)'),
-    new Category('Sladkosti'),
-    new Category('Konzervy'),
-    new Category('Slané výrobky'),
-    new Category('Drogerie (kapesníky, pasta, ...)'),
-    new Category('Nápoje'),
-    new Category('Ostatní')
-  ]
+
+  categories: Category[] = this.goodsCategoryService.getAllCategories()
+
 
   onClear() {
-    console.log("Clear activated.");
     this.name = "";
     this.count = 1;
     this.nrss = "default";
@@ -45,7 +38,7 @@ export class FormComponent implements OnInit {
 
   onCreate(nameInput: HTMLInputElement) {
     if (this.name == "" || this.nrss == "default" || this.count < 1) {
-      alert("Něco není správně!")
+      alert("Something is wrong!")
       return
     }
 
@@ -56,8 +49,7 @@ export class FormComponent implements OnInit {
     this.onClear()
   }
 
-  constructor() {}
-  
+
   onDelete() {
     this.deleteAll.emit();
   }

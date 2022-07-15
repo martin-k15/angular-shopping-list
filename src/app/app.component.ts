@@ -4,6 +4,7 @@ import { CategoryGoods } from './shared/categoryGoods.model';
 import { Goods } from './shared/goods.model';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { GoodsCategoryService } from './service/goods-category.service';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,10 @@ import html2canvas from 'html2canvas';
 export class AppComponent {
   title = 'angular-shopping';
 
+  constructor(private goodsCategoryService: GoodsCategoryService){}
+
+  ngOnInit(){ }
+  allGoods: CategoryGoods[] = this.goodsCategoryService.getAllGoods();
 
   onGoodsCreated(g: Goods, c: string) {
     this.allGoods.forEach(elm => {
@@ -23,7 +28,6 @@ export class AppComponent {
   }
 
   onGoodsDeleteAll() {
-
     this.allGoods.forEach(elem => {
       elem.goods.splice(0, elem.goods.length)
     });
@@ -31,36 +35,8 @@ export class AppComponent {
   }
 
   ngDestory() {
-    console.log("DESTROY called!")
+    //console.log("DESTROY called!")
   }
-
-  /*
-    deleteElementNew(goods: Goods[], product: Goods) {
-      console.log(goods + " DELETE --->" + product.goodsName);
-      goods.splice(goods.indexOf(product), 1);
-  
-    }
-    */
-
-  // defaultní zboží
-  fruitsAndVegetables: Goods[] = [new Goods('apple', 4), new Goods('plum', 3), new Goods('carrot', 6)];
-  meat: Goods[] = [new Goods('chicken meat', 1), new Goods('ham', 1)];
-  diaryProducts: Goods[] = [new Goods('milk', 2), new Goods('yoghurt', 5), new Goods('cream', 2), new Goods('butter', 2)];
-
-  @Input() allGoods: CategoryGoods[] = [
-    new CategoryGoods(new Category('Fruits and vegetables'), this.fruitsAndVegetables),
-    new CategoryGoods(new Category('Meat and cheese'), this.meat),
-    new CategoryGoods(new Category('Bakery products'), []),
-    new CategoryGoods(new Category('Diary products'), this.diaryProducts),
-    new CategoryGoods(new Category('Cooking (pasta, spice, ...'), []),
-    new CategoryGoods(new Category('Sweets'), []),
-    new CategoryGoods(new Category('Cans'), []),
-    new CategoryGoods(new Category('Salt products'), []),
-    new CategoryGoods(new Category('Drogery (tissues, toothpaste, ...)'), []),
-    new CategoryGoods(new Category('Drinks'), []),
-    new CategoryGoods(new Category('Other'), [])
-  ];
-
 
   /* PDF EXPORT */
   @ViewChild('htmlData') htmlData!: ElementRef;
